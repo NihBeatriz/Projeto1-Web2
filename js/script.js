@@ -2,19 +2,24 @@ const vetCidade = [];
 const listEl = document.getElementById('resultado');
 
 document.querySelector('button').addEventListener('click', function () {
+    document.getElementById('validacao').style.display = 'none';
     var cidade = document.getElementById('cidade').value;
     
     if (cidade.length < 3) {
-        return alert('Favor inserir o campo com mais de três caracteres');
+        document.getElementById('cidade').value = '';
+        document.getElementById('validacao').style.display = 'block';
+        return;
     }
 
     startCarregar();
     var chamadaApi = 'https://api.openweathermap.org/data/2.5/weather?q=' + cidade + '&appid=83a9db599874d9f5683e2016c92ae339';
 
     axios.get(chamadaApi).then(function (res) {
+        document.getElementById('cidValidacao').style.display = 'none';
         salvaArray(res);
     }).catch(error => {
-        alert('Cidade não encontrada');
+        document.getElementById('cidValidacao').style.display = 'block';
+        return;
     })
         .finally(() => endCarregar(),
         document.getElementById('cidade').value = '');

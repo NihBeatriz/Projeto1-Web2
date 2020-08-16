@@ -61,6 +61,14 @@ button:hover {
     background: #395ad7;
 }
 
+#validacao{
+    color: red;
+}
+
+#cidValidacao{
+    color: red;
+}
+
 #carregar {
     display: block;
     margin-top: 5px;
